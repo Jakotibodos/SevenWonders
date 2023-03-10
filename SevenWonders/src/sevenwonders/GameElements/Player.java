@@ -20,6 +20,10 @@ public class Player {
     private ArrayList<Integer[]> yellowComp = new ArrayList<>(); //OR resources yellow
     private int bluePts = 0;
     private int[] tradingCosts = {2,2,2}; //0:leftBrown, 1:rightBrown 2:grey
+
+    private int shields = 0;
+
+    private int[] science = {0,0,0}; //compass, gear, tablet
     public Player(){
         this.addResource(0,3);
     }
@@ -39,9 +43,16 @@ public class Player {
         this.bluePts += amount;
     }
 
+    public void addShields(int amount){
+        this.shields += amount;
+    }
     //For trading posts and Marketplace
     //0:leftBrown, 1:rightBrown 2: grey
     public void lowerTradingCosts(int idx){
-        tradingCosts[idx] = 1;
+        this.tradingCosts[idx] = 1;
+    }
+
+    public void addScience(int idx){
+        this.science[idx] += 1; //compass, gear, tablet
     }
 }
