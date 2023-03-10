@@ -3,11 +3,13 @@ package sevenwonders.GameElements.Cards;
 import sevenwonders.GameElements.Card;
 import sevenwonders.GameElements.Player;
 
-public class Ore_Vein extends Card {
-    public Ore_Vein(){
-        super(4,"Ore Vein",0,1);
+public class Theater extends Card {
+
+    public Theater(){
+        super(17,"Theater",2,1);
     }
+
     public void build(Player p){
-        p.addResource(4,1); //ore
+        p.addBluePoints(2);
     }
 }

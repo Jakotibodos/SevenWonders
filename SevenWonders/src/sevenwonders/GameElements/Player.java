@@ -17,8 +17,9 @@ public class Player {
     private int[] resources = {0,0,0,0,0,0,0,0};
     //{coins,wood,stone,bricks,ore,glass,papyrus,textile}
     private ArrayList<Integer[]> brownComp = new ArrayList<>(); //OR resources brown
-
     private ArrayList<Integer[]> yellowComp = new ArrayList<>(); //OR resources yellow
+    private int bluePts = 0;
+    private int[] tradingCosts = {2,2,2}; //0:leftBrown, 1:rightBrown 2:grey
     public Player(){
         this.addResource(0,3);
     }
@@ -34,4 +35,13 @@ public class Player {
         this.yellowComp.add(comp);
     }
 
+    public void addBluePoints(int amount){
+        this.bluePts += amount;
+    }
+
+    //For trading posts and Marketplace
+    //0:leftBrown, 1:rightBrown 2: grey
+    public void lowerTradingCosts(int idx){
+        tradingCosts[idx] = 1;
+    }
 }

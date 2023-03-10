@@ -3,11 +3,13 @@ package sevenwonders.GameElements.Cards;
 import sevenwonders.GameElements.Card;
 import sevenwonders.GameElements.Player;
 
-public class Ore_Vein extends Card {
-    public Ore_Vein(){
-        super(4,"Ore Vein",0,1);
+public class Tavern extends Card {
+
+    public Tavern(){
+        super(18,"Tavern",3,1);
     }
+
     public void build(Player p){
-        p.addResource(4,1); //ore
+        p.addResource(0,5); //coins
     }
 }

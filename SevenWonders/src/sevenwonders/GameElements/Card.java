@@ -19,9 +19,9 @@ public class Card implements Buildable{
     private Card prereq;
     
     private final String[] res2id = {"Coin","Clay","Ore","Stone","Wood","Cloth","Glass","Papyrus"};
+    private final String[] type2id = {"Brown","Grey","Blue","Yellow","Red","Green","Purple"};
     
-    
-    public Card(int id,String name,String type, int[] cost,int age){
+    public Card(int id,String name,int type, int[] cost,int age){
         this.id = id;
         this.name = name;
         this.age = age;
@@ -29,7 +29,7 @@ public class Card implements Buildable{
     }
 
     //for free cards
-    public Card(int id,String name,String type,int age){
+    public Card(int id,String name,int type,int age){
         this.id = id;
         this.name = name;
         this.age = age;

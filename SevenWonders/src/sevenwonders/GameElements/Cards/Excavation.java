@@ -6,7 +6,7 @@ import sevenwonders.GameElements.Player;
 public class Excavation extends Card {
 
     public Excavation(){
-        super(6,"Excavation","Brown",new int[] {1,0,0,0,0,0,0},1);
+        super(6,"Excavation",0,new int[] {1,0,0,0,0,0,0},1);
     }
 
     public void build(Player p){

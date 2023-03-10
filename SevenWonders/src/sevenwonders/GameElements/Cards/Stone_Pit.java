@@ -6,7 +6,7 @@ import sevenwonders.GameElements.Player;
 public class Stone_Pit extends Card {
 
     public Stone_Pit(){
-        super(2,"Stone Pit","Brown",1);
+        super(2,"Stone Pit",0,1);
     }
 
     public void build(Player p){

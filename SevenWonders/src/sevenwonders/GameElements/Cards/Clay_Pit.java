@@ -6,7 +6,7 @@ import sevenwonders.GameElements.Player;
 public class Clay_Pit extends Card {
 
     public Clay_Pit(){
-        super(7,"Clay_Pit","Brown",new int[] {1,0,0,0,0,0,0},1);
+        super(7,"Clay_Pit",0,new int[] {1,0,0,0,0,0,0},1);
     }
 
     public void build(Player p){

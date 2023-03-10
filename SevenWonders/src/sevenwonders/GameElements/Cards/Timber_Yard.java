@@ -6,7 +6,7 @@ import sevenwonders.GameElements.Player;
 public class Timber_Yard extends Card {
 
     public Timber_Yard(){
-        super(8,"Timber Yard","Brown",new int[] {1,0,0,0,0,0,0},1);
+        super(8,"Timber Yard",0,new int[] {1,0,0,0,0,0,0},1);
     }
 
     public void build(Player p){

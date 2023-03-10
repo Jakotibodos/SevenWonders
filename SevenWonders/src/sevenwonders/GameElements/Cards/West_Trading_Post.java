@@ -3,11 +3,13 @@ package sevenwonders.GameElements.Cards;
 import sevenwonders.GameElements.Card;
 import sevenwonders.GameElements.Player;
 
-public class Ore_Vein extends Card {
-    public Ore_Vein(){
-        super(4,"Ore Vein",0,1);
+public class West_Trading_Post extends Card {
+
+    public West_Trading_Post(){
+        super(20,"West Trading Post",3,1);
     }
+
     public void build(Player p){
-        p.addResource(4,1); //ore
+        p.lowerTradingCosts(0); //Left Brown
     }
 }
