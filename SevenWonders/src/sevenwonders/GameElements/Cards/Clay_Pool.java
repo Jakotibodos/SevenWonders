@@ -5,9 +5,9 @@ import sevenwonders.GameElements.Player;
 
 public class Clay_Pool extends Card {
     public Clay_Pool(){
-        super(1,"Clay Pool","Brown",'1');
+        super(3,"Clay Pool","Brown",1);
     }
     public void build(Player p){
-        p.addResource(3,1);
+        p.addResource(3,1); //bricks
     }
 }

@@ -23,8 +23,8 @@ public class Player {
         this.addResource(0,3);
     }
 
-    public void addResource(int residx, int amount){
-        this.resources[residx] =+ amount;
+    public void addResource(int resIdx, int amount){
+        this.resources[resIdx] =+ amount;
     }
 
     public void addBrownComp(Integer[] comp){

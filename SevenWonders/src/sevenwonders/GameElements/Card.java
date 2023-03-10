@@ -64,10 +64,6 @@ public class Card implements Buildable{
         prereq = previous;
     }
 
-
-
-
-
     public void print(){
         System.out.println("Name: " + name);
         System.out.println("Cost: " + printCost(cost));
