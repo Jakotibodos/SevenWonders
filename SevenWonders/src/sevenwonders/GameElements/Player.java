@@ -5,14 +5,23 @@
  */
 package sevenwonders.GameElements;
 
+import sevenwonders.GameElements.Cards.Card;
+import java.util.ArrayList;
 /**
  *
  * @author jakot
  */
 public class Player {
-    private Card[] hand;
-    private Card[] played;
-    private Wonder wonderBoard;
+    private ArrayList<Card> hand = new ArrayList<>();
+    private ArrayList<Card> built = new ArrayList<>();
+    private Wonder wonderBoard = new Wonder();
     private int coins;
-    
+
+    private int[] resources; //[wood, stone, brick, ore, glass, papyrus, textile]
+
+
+    public Player(){
+        this.resources = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+        this.coins = 3;
+    }
 }

@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sevenwonders.GameElements;
-
-import java.util.Arrays;
+package sevenwonders.GameElements.Cards;
 
 /**
  *
@@ -14,10 +12,10 @@ import java.util.Arrays;
 public class Card {
     
     private final int id; //ID > 0
-    private final String name;
-    private final int age;
-    private final int colorid;
-    private final int[] cost = new int[8]; //[Coins,Clay,Ore,Stone,Wood,Glass,Papyrus,Textile]
+    private String name;
+    private int age;
+    private int colorid;
+    private int[] cost = new int[8]; //[Coins,Clay,Ore,Stone,Wood,Glass,Papyrus,Textile]
     private Card prereq;
     
     private final String[] res2id = {"Coin","Clay","Ore","Stone","Wood","Cloth","Glass","Papyrus"};
