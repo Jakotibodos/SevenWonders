@@ -8,7 +8,7 @@ package sevenwonders;
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
-import sevenwonders.GameElements.Cards.Card;
+import sevenwonders.GameElements.Card;
 import java.util.ArrayList;
 /**
  *
@@ -24,7 +24,6 @@ public class SevenWonders {
             File myObj = new File("Components/cards.csv");
             Scanner myReader = new Scanner(myObj);
             myReader.nextLine();
-
             ArrayList<Card> deck = new ArrayList<>();
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();

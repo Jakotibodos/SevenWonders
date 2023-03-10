@@ -9,6 +9,6 @@ package sevenwonders.GameElements;
  *
  * @author jakot
  */
-public class Wonder {
+public class WonderBoard {
     
 }

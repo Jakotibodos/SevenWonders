@@ -5,7 +5,6 @@
  */
 package sevenwonders.GameElements;
 
-import sevenwonders.GameElements.Cards.Card;
 import java.util.ArrayList;
 /**
  *
@@ -14,14 +13,25 @@ import java.util.ArrayList;
 public class Player {
     private ArrayList<Card> hand = new ArrayList<>();
     private ArrayList<Card> built = new ArrayList<>();
-    private Wonder wonderBoard = new Wonder();
-    private int coins;
+    private WonderBoard wonderBoard = new WonderBoard();
+    private int[] resources = {0,0,0,0,0,0,0,0};
+    //{coins,wood,stone,bricks,ore,glass,papyrus,textile}
+    private ArrayList<Integer[]> brownComp = new ArrayList<>(); //OR resources brown
 
-    private int[] resources; //[wood, stone, brick, ore, glass, papyrus, textile]
-
-
+    private ArrayList<Integer[]> yellowComp = new ArrayList<>(); //OR resources yellow
     public Player(){
-        this.resources = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-        this.coins = 3;
+        this.addResource(0,3);
     }
+
+    public void addResource(int residx, int amount){
+        this.resources[residx] =+ amount;
+    }
+
+    public void addBrownComp(Integer[] comp){
+        this.brownComp.add(comp);
+    }
+    public void addYellowComp(Integer[] comp){
+        this.yellowComp.add(comp);
+    }
+
 }
