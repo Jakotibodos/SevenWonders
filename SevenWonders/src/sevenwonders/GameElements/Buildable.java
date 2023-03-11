@@ -4,7 +4,7 @@ public interface Buildable {
     final String[] res2id = {"Coins","Clay","Ore","Stone","Wood","Cloth","Glass","Papyrus"};
     public boolean canBuild();
 
-    public void build();
+    public void build(Player p);
 
     public default String printCost(int[] cost){
 

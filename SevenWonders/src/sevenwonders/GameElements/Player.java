@@ -55,4 +55,9 @@ public class Player {
     public void addScience(int idx){
         this.science[idx] += 1; //compass, gear, tablet
     }
+    
+    public void printResources(){
+        for(int resource : this.resources)
+            System.out.print(String.valueOf(resource)+" ");
+    }
 }

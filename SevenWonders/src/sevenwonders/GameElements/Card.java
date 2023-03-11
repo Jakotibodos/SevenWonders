@@ -11,6 +11,7 @@ package sevenwonders.GameElements;
  */
 public class Card implements Buildable{
     
+    private CardEffect buildAction;
     private final int id; //ID > 0
     private String name;
     private int age;
@@ -27,7 +28,22 @@ public class Card implements Buildable{
         this.age = age;
         this.colorid = 0;
     }
+    
+    public Card(int id,String name,int type, int[] cost,int age, CardEffect buildAction){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.colorid = 0;
+        this.buildAction = buildAction;
+    }
 
+    public Card(int id,String name,int type ,int age, CardEffect buildAction){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.colorid = 0;
+        this.buildAction = buildAction;
+    }
     //for free cards
     public Card(int id,String name,int type,int age){
         this.id = id;
@@ -74,4 +90,10 @@ public class Card implements Buildable{
         return false;
     }
     
+    public void build(Player p){
+        if (buildAction != null) 
+           buildAction.apply(p);
+        
+    }
+        
 }
