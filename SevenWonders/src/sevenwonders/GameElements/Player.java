@@ -31,7 +31,7 @@ public class Player {
     
     private int[] science = {0,0,0,0}; //compass, gear, tablet, extra
     
-    private ArrayList<CardEffect> conditionnalPointsUpdate;
+    private ArrayList<CardEffect> conditionnalPointsUpdate = new ArrayList<>();
     
     private Player leftPlayer;
     private Player rightPlayer;
@@ -106,6 +106,10 @@ public class Player {
         return this.wonderBoard;
     }
     
+    public int getNumberMinusTokens(){
+        return this.minusWarTokens;
+    }
+    
     public Player getLeftPlayer(){
         return this.leftPlayer;
     }
@@ -134,4 +138,13 @@ public class Player {
             
         }
     }
+    
+    public void printPoints(){
+        System.out.println("Blue pts: "+String.valueOf(this.bluePts));
+        System.out.println("Yellow pts: "+String.valueOf(this.yellowPts));
+        System.out.println("Red pts: "+String.valueOf(this.redPts));
+        System.out.println("Green pts: "+String.valueOf(this.greenPts));
+        System.out.println("Purple pts: "+String.valueOf(this.purplePts));
+    }
+    
 }

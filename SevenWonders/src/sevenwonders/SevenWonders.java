@@ -176,5 +176,34 @@ public class SevenWonders {
                     (Player q)-> {q.addPurplePoints(q.getLeftPlayer().getWonderBoard().getWondersCompleted()
                             +q.getRightPlayer().getWonderBoard().getWondersCompleted()
                             +q.getWonderBoard().getWondersCompleted());});}); 
+        Card c74 = new Card(74,"Spies Guild",6,new int[] {0,0,0,3,0,1,0,0},3,(Player p )->{
+                p.addConditionalPointsToUpdate( //Add points = number of red cards of neighbors
+                    (Player q)-> {q.addPurplePoints(q.getLeftPlayer().getCountColor(4)+q.getRightPlayer().getCountColor(4));});}); 
+        Card c75 = new Card(75,"Philosophers Guild",6,new int[] {0,0,0,3,0,0,1,1},3,(Player p )->{
+                p.addConditionalPointsToUpdate( //Add points = number of green cards of neighbors
+                    (Player q)-> {q.addPurplePoints(q.getLeftPlayer().getCountColor(5)+q.getRightPlayer().getCountColor(5));});}); 
+        Card c76 = new Card(76,"Strategists Guild",6,new int[] {0,0,1,0,2,0,0,1},3,(Player p )->{
+                p.addConditionalPointsToUpdate( //Add points = number of Minus Tokens of neighbors
+                    (Player q)-> {q.addPurplePoints(q.getLeftPlayer().getNumberMinusTokens()+q.getRightPlayer().getNumberMinusTokens());});}); 
+        Card c77 = new Card(77,"Scientists Guild",6,new int[] {0,2,0,0,2,0,1,0},3,(Player p)->p.addScience(3)); //Conditional science
+        Card c78 = new Card(78,"Shipowners Guild",6,new int[] {0,3,0,0,0,1,1,0},3,(Player p )->{
+                p.addConditionalPointsToUpdate( //Add points = number of brown, grey and purple cards owned
+                    (Player q)-> {q.addPurplePoints(q.getCountColor(0)+q.getCountColor(1)+q.getCountColor(6));});});
+        
+        
+        
+        Player p = new Player();
+        c1.build(p);
+        p.updateConditionalPoints(3);
+        p.printResources();
+        p.printPoints();
+        c78.build(p);
+        p.updateConditionalPoints(3);
+        p.printResources();
+        p.printPoints();
+        
+        
+        
+        
     }
 }
