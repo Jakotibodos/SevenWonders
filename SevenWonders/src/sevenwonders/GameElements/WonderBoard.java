@@ -11,4 +11,11 @@ package sevenwonders.GameElements;
  */
 public class WonderBoard {
     
+    private int wondersCompleted = 0;
+    
+    
+    
+    public int getWondersCompleted(){
+        return this.wondersCompleted;
+    }
 }

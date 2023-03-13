@@ -16,24 +16,24 @@ public class Card implements Buildable{
     private String name;
     private int age;
     private int colorid;
-    private int[] cost; //[Coins,Clay,Ore,Stone,Wood,Glass,Papyrus,Textile]
+    private int[] cost; //{coins,wood,stone,bricks,ore,glass,papyrus,textile}
     private Card prereq;
     
-    private final String[] res2id = {"Coin","Clay","Ore","Stone","Wood","Cloth","Glass","Papyrus"};
+    private final String[] res2id = {"coins","wood","stone","bricks","ore","glass","papyrus","textile"};
     private final String[] type2id = {"Brown","Grey","Blue","Yellow","Red","Green","Purple"};
     
     public Card(int id,String name,int type, int[] cost,int age){
         this.id = id;
         this.name = name;
         this.age = age;
-        this.colorid = 0;
+        this.colorid = type;
     }
     
     public Card(int id,String name,int type, int[] cost,int age, CardEffect buildAction){
         this.id = id;
         this.name = name;
         this.age = age;
-        this.colorid = 0;
+        this.colorid = type;
         this.buildAction = buildAction;
     }
 
@@ -41,7 +41,7 @@ public class Card implements Buildable{
         this.id = id;
         this.name = name;
         this.age = age;
-        this.colorid = 0;
+        this.colorid = type;
         this.buildAction = buildAction;
     }
     //for free cards
@@ -49,7 +49,7 @@ public class Card implements Buildable{
         this.id = id;
         this.name = name;
         this.age = age;
-        this.colorid = 0;
+        this.colorid = type;
     }
     
     public int getID(){
@@ -93,6 +93,7 @@ public class Card implements Buildable{
     public void build(Player p){
         if (buildAction != null) 
            buildAction.apply(p);
+        p.addCountColor(this.getColorid());
         
     }
         

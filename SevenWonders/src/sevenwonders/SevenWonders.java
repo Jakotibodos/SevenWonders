@@ -86,5 +86,95 @@ public class SevenWonders {
         Card c32 = new Card(32,"Glassworks",1,2,(Player p )->p.addResource(5,1)); //glass
         Card c33 = new Card(33,"Press",1,2,(Player p )->p.addResource(6,1)); //papyrus
         Card c34 = new Card(34,"Loom",1,2,(Player p )->p.addResource(7,1)); //textile
+        
+        //Age 2 Blue cards
+        Card c35 = new Card(35,"Statue",2,new int[] {0,1,0,2,0,0,0,0},2,(Player p )->p.addBluePoints(4)); //4 Blue Points
+        Card c36 = new Card(36,"Aqueduct",2,new int[] {0,0,3,0,0,0,0,0},2,(Player p )->p.addBluePoints(5)); //5 Blue Points
+        Card c37 = new Card(37,"Temple",2,new int[] {0,1,0,1,0,1,0,0},2,(Player p )->p.addBluePoints(4)); //4 Blue Points
+        Card c38 = new Card(38,"Courthouse",2,new int[] {0,0,0,2,0,0,0,1},2,(Player p )->p.addBluePoints(5)); //4 Blue Points
+        
+        //Age 2 Yellow cards
+        Card c39 = new Card(39,"Caravansery",3,new int[] {0,2,0,0,0,0,0,0},2,
+                (Player p )->{Integer[] comp = new Integer[4];comp[0] = 1;comp[1] = 2;comp[2] = 3;comp[3] = 4;p.addYellowComp(comp);}); //Brown ressources composition
+        Card c40 = new Card(40,"Forum",3,new int[] {0,0,0,2,0,0,0,0},2,
+                (Player p )->{Integer[] comp = new Integer[3];comp[0] = 5;comp[1] = 6;comp[2] = 7;p.addYellowComp(comp);}); //Grey ressources composition
+        Card c41 = new Card(41,"Vineyard",3,2,
+                (Player p )->{int coinsToAdd = p.getLeftPlayer().getCountColor(0)+p.getRightPlayer().getCountColor(0)+p.getCountColor(0);
+                        p.addResource(0, coinsToAdd);}); //Add coins = brown cards of you and neighbors
+        Card c42 = new Card(42,"Bazar",3,2,
+                (Player p )->{int coinsToAdd = p.getLeftPlayer().getCountColor(1)+p.getRightPlayer().getCountColor(1)+p.getCountColor(1);
+                        p.addResource(0, coinsToAdd*2);}); //Add coins = 2 x grey cards of you and neighbors
+        
+        //Age 2 Red cards
+        Card c43 = new Card(43,"Stables",4,new int[] {0,1,0,1,1,0,0,0},2,(Player p)->p.addShields(2));
+        Card c44 = new Card(44,"Archery Range",4,new int[] {0,2,0,0,1,0,0,0},2,(Player p)->p.addShields(2));
+        Card c45 = new Card(45,"Walls",4,new int[] {0,0,3,0,0,0,0,0},2,(Player p)->p.addShields(2));
+        Card c46 = new Card(46,"Training Ground",4,new int[] {0,1,0,0,2,0,0,0},2,(Player p)->p.addShields(2));
+        
+        //Age 2 Green cards
+        Card c47 = new Card(47,"Dispensary",5,new int[] {0,0,0,0,2,1,0,0},2,(Player p)->p.addScience(0)); //compass
+        Card c48 = new Card(48,"Laboratory",5,new int[]{0,0,0,2,0,0,1,0},2,(Player p)->p.addScience(1)); //gear
+        Card c49 = new Card(49,"Library",5,new int[]{0,0,2,0,0,0,0,1},2,(Player p)->p.addScience(2)); //tablet
+        Card c50 = new Card(50,"School",5,new int[]{0,1,0,0,0,0,1,0},2,(Player p)->p.addScience(2)); //tablet
+        
+        
+        //AGE 3 CARDS
+        
+        //Age 3 Blue cards
+        Card c51 = new Card(51,"Pantheon",2,new int[] {0,0,0,2,1,1,1,1},3,(Player p )->p.addBluePoints(7)); //7 Blue Points
+        Card c52 = new Card(52,"Gardens",2,new int[] {0,1,0,2,0,0,0,0},3,(Player p )->p.addBluePoints(5)); //5 Blue Points
+        Card c53 = new Card(53,"Town Hall",2,new int[] {0,0,2,0,1,1,0,0},3,(Player p )->p.addBluePoints(6)); //6 Blue Points
+        Card c54 = new Card(54,"Palace",2,new int[] {0,1,1,1,1,1,1,1},3,(Player p )->p.addBluePoints(8)); //8 Blue Points
+        Card c55 = new Card(55,"Senate",2,new int[] {0,2,1,0,1,0,0,0},3,(Player p )->p.addBluePoints(6)); //6 Blue Points
+        
+        //Age 3 Yellow cards
+        Card c56 = new Card(56,"Lighthouse",3,new int[] {0,0,1,0,0,1,0,0},3,(Player p )->{
+                p.addResource(0, p.getCountColor(3)); //Add coins = number of previous yellow cards
+                p.addConditionalPointsToUpdate( //Add points = number of previous yellow cards
+                    (Player q)-> {q.addYellowPoints(q.getCountColor(3));});}); 
+        Card c57 = new Card(57,"Haven",3,new int[] {0,1,0,0,1,0,0,1},3,(Player p )->{
+                p.addResource(0, p.getCountColor(0)); //Add coins = number of previous brown cards
+                p.addConditionalPointsToUpdate( //Add points = number of previous brown cards
+                    (Player q)-> {q.addYellowPoints(q.getCountColor(0));});}); 
+        Card c58 = new Card(58,"Chamber of Commerce",3,new int[] {0,0,0,2,0,0,1,0},3,(Player p )->{
+                p.addResource(0, 2*p.getCountColor(1)); //Add coins = 2x number of previous grey cards
+                p.addConditionalPointsToUpdate( //Add points = 2x number of previous grey cards
+                    (Player q)-> {q.addYellowPoints(2*q.getCountColor(1));});}); 
+        Card c59 = new Card(59,"Arena",3,new int[] {0,0,2,0,1,0,0,0},3,(Player p )->{
+                p.addResource(0, 3*p.getWonderBoard().getWondersCompleted()); //Add coins = 3x number of completed wonders
+                p.addConditionalPointsToUpdate( //Add points = number of completed wonders
+                    (Player q)-> {q.addYellowPoints(p.getWonderBoard().getWondersCompleted());});});
+        
+        //Age 3 Red cards
+        Card c60 = new Card(60,"Fortifications",4,new int[] {0,0,1,0,3,0,0,0},3,(Player p)->p.addShields(3));
+        Card c61 = new Card(61,"Circus",4,new int[] {0,0,3,0,1,0,0,0},3,(Player p)->p.addShields(3));
+        Card c62 = new Card(62,"Arsenal",4,new int[] {0,2,0,0,1,0,0,1},3,(Player p)->p.addShields(3));
+        Card c63 = new Card(63,"Siege Workshop",4,new int[] {0,1,0,3,0,0,0,0},3,(Player p)->p.addShields(3));
+        
+        //Age 3 Green cards
+        Card c64 = new Card(64,"Lodge",5,new int[] {0,0,0,2,0,0,1,1},3,(Player p)->p.addScience(0)); //compass
+        Card c65 = new Card(65,"Academy",5,new int[]{0,0,3,0,0,1,0,0},3,(Player p)->p.addScience(0)); //compass
+        Card c66 = new Card(66,"Observatory",5,new int[]{0,0,0,0,2,1,0,1},3,(Player p)->p.addScience(1)); //gear
+        Card c67 = new Card(67,"Study",5,new int[]{0,1,0,0,0,1,0,1},3,(Player p)->p.addScience(1)); //gear
+        Card c68 = new Card(68,"University",5,new int[] {0,2,0,0,0,1,1,0},3,(Player p)->p.addScience(2)); //tablet
+        
+        //Age 3 purple cards
+        Card c69 = new Card(69,"Workers Guild",6,new int[] {0,1,1,1,2,0,0,0},3,(Player p )->{
+                p.addConditionalPointsToUpdate( //Add points = number of brown cards of neighbors
+                    (Player q)-> {q.addPurplePoints(q.getLeftPlayer().getCountColor(0)+q.getRightPlayer().getCountColor(0));});}); 
+        Card c70 = new Card(70,"Craftmens Guild",6,new int[] {0,0,2,0,2,0,0,0},3,(Player p )->{
+                p.addConditionalPointsToUpdate( //Add points = 2x number of grey cards of neighbors
+                    (Player q)-> {q.addPurplePoints(2*(q.getLeftPlayer().getCountColor(1)+q.getRightPlayer().getCountColor(1)));});});
+        Card c71 = new Card(71,"Magistrates Guild",6,new int[] {0,3,1,0,0,0,0,1},3,(Player p )->{
+                p.addConditionalPointsToUpdate( //Add points = number of blue cards of neighbors
+                    (Player q)-> {q.addPurplePoints(q.getLeftPlayer().getCountColor(2)+q.getRightPlayer().getCountColor(2));});}); 
+        Card c72 = new Card(72,"Traders Guild",6,new int[] {0,0,0,0,0,1,1,1},3,(Player p )->{
+                p.addConditionalPointsToUpdate( //Add points = number of yellow cards of neighbors
+                    (Player q)-> {q.addPurplePoints(q.getLeftPlayer().getCountColor(3)+q.getRightPlayer().getCountColor(3));});}); 
+        Card c73 = new Card(73,"Builders Guild",6,new int[] {0,0,2,2,0,1,0,0},3,(Player p )->{
+                p.addConditionalPointsToUpdate( //Add points = number of completed wonders of player and neighbors
+                    (Player q)-> {q.addPurplePoints(q.getLeftPlayer().getWonderBoard().getWondersCompleted()
+                            +q.getRightPlayer().getWonderBoard().getWondersCompleted()
+                            +q.getWonderBoard().getWondersCompleted());});}); 
     }
 }
