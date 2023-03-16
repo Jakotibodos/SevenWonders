@@ -18,6 +18,7 @@ public class Card implements Buildable{
     private int colorid;
     private int[] cost; //{coins,wood,stone,bricks,ore,glass,papyrus,textile}
     private Card prereq;
+    private int freeIfID;
     
     private final String[] res2id = {"coins","wood","stone","bricks","ore","glass","papyrus","textile"};
     private final String[] type2id = {"Brown","Grey","Blue","Yellow","Red","Green","Purple"};
