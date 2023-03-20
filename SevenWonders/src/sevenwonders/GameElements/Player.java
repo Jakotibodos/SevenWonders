@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @author jakot
  */
 public class Player {
+    private final int pid;
     private ArrayList<Card> hand = new ArrayList<>();
     private ArrayList<Card> built = new ArrayList<>();
     private int[] builtCardsByColor = {0,0,0,0,0,0,0};
@@ -37,9 +38,12 @@ public class Player {
     private Player rightPlayer;
     
     
-    public Player(){
+    public Player(int id){
         this.addResource(0,3);
+        this.pid = id;
     }
+    
+    
 
     public void addResource(int resIdx, int amount){
         this.resources[resIdx] =+ amount;

@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 import sevenwonders.GameElements.Card;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import sevenwonders.GameElements.Player;
 /**
@@ -22,9 +23,35 @@ public class SevenWonders{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        initializeGame();
         
-        ArrayList<Card> deck = createDeck(1,4);
+    }
+    
+    public static void initializeGame(){
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Enter number of players: ");
+        int nplayers = input.nextInt();
+        while(nplayers<3||nplayers>7){
+          System.out.println("Number of players must be between (3 and 7)");
+          System.out.println("Enter number of players: ");
+          nplayers = input.nextInt();  
+        }
+        
+        ArrayList<Card> deck = createDeck(1,nplayers);
         System.out.println(deck.size());
+        Collections.shuffle(deck);
+        ArrayList<Player> players = createPlayers(nplayers);
+        
+    }
+    
+    
+    public static ArrayList<Player> createPlayers(int nplayers){
+        ArrayList<Player> players = new ArrayList<>();
+        for(int i =1; i<=nplayers; i++){
+            players.add(new Player(i));
+        }
+        return players;
     }
     
     public static void createCards(){
@@ -102,10 +129,10 @@ public class SevenWonders{
                 (Player p )->{Integer[] comp = new Integer[3];comp[0] = 5;comp[1] = 6;comp[2] = 7;p.addYellowComp(comp);}); //Grey ressources composition
         Card c41 = new Card(41,"Vineyard",3,2,
                 (Player p )->{int coinsToAdd = p.getLeftPlayer().getCountColor(0)+p.getRightPlayer().getCountColor(0)+p.getCountColor(0);
-                        p.addResource(0, coinsToAdd);}); //Add coins = brown    deck of you and neighbors
+                        p.addResource(0, coinsToAdd);}); //Add coins = brown deck of you and neighbors
         Card c42 = new Card(42,"Bazar",3,2,
                 (Player p )->{int coinsToAdd = p.getLeftPlayer().getCountColor(1)+p.getRightPlayer().getCountColor(1)+p.getCountColor(1);
-                        p.addResource(0, coinsToAdd*2);}); //Add coins = 2 x grey   deck of you and neighbors
+                        p.addResource(0, coinsToAdd*2);}); //Add coins = 2 x grey deck of you and neighbors
         
         //Age 2 Red deck
         Card c43 = new Card(43,"Stables",4,new int[] {0,1,0,1,1,0,0,0},2,(Player p)->p.addShields(2));
@@ -194,7 +221,7 @@ public class SevenWonders{
         
         
         
-        Player p = new Player();
+        Player p = new Player(1);
         c1.build(p);
         p.updateConditionalPoints(3);
         p.printResources();

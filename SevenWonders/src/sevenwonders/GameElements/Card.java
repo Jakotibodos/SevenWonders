@@ -23,6 +23,11 @@ public class Card implements Buildable{
     private final String[] res2id = {"coins","wood","stone","bricks","ore","glass","papyrus","textile"};
     private final String[] type2id = {"Brown","Grey","Blue","Yellow","Red","Green","Purple"};
     
+    
+    public Card(){ //Used for temp
+        this.id = 0;
+    }
+    
     public Card(int id,String name,int type, int[] cost,int age){
         this.id = id;
         this.name = name;
@@ -94,8 +99,7 @@ public class Card implements Buildable{
     public void build(Player p){
         if (buildAction != null) 
            buildAction.apply(p);
-        p.addCountColor(this.getColorid());
-        
+        p.addCountColor(this.getColorid());  
     }
         
 }

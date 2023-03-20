@@ -10,5 +10,5 @@ package sevenwonders.GameElements;
  * @author jakot
  */
 public interface CardEffect {
-    void apply(Player player);
+    public void apply(Player player);
 }
