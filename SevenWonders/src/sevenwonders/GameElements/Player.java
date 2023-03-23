@@ -31,16 +31,17 @@ public class Player {
     private int minusWarTokens = 0;
     
     private int[] science = {0,0,0,0}; //compass, gear, tablet, extra
-    
+    private boolean isBot;
     private ArrayList<CardEffect> conditionnalPointsUpdate = new ArrayList<>();
     
     private Player leftPlayer;
     private Player rightPlayer;
     
     
-    public Player(int id){
+    public Player(int id, boolean isBot){
         this.addResource(0,3);
         this.pid = id;
+        this.isBot = isBot;
     }
     
     
@@ -114,6 +115,12 @@ public class Player {
         return this.minusWarTokens;
     }
     
+    public void setLeftPlayer(Player p){
+        this.leftPlayer = p;
+    }
+    public void setRightPlayer(Player p){
+        this.rightPlayer = p;
+    }
     public Player getLeftPlayer(){
         return this.leftPlayer;
     }
