@@ -13,8 +13,9 @@ import java.util.ArrayList;
 public class Player {
     private final int pid;
     private ArrayList<Card> hand = new ArrayList<>();
-    private ArrayList<Card> built = new ArrayList<>();
-    private int[] builtCardsByColor = {0,0,0,0,0,0,0};
+    private ArrayList<Integer> built = new ArrayList<>(); //used for free cards in other ages
+    private int[] builtCardsByColor = {0,0,0,0,0,0,0,0}; 
+    //Brown, Grey, blue, yellow, red, green, purple, wonder
     private WonderBoard wonderBoard = new WonderBoard();
     private int[] resources = {0,0,0,0,0,0,0,0};
     //{coins,wood,stone,bricks,ore,glass,papyrus,textile}
@@ -158,4 +159,11 @@ public class Player {
         System.out.println("Purple pts: "+String.valueOf(this.purplePts));
     }
     
+    public ArrayList<Integer> getBuilt(){
+        return this.built;
+    }
+    
+    public int[] getResources(){
+        return this.resources;
+    }
 }

@@ -92,8 +92,36 @@ public class Card implements Buildable{
         System.out.println("FreeWith: " + prereq.getName());
     }
     
-    public boolean canBuild(){
-        return false;
+    public boolean canBuild(Player p){
+        if(p.getBuilt().contains(this.freeIfID)) //Check if can afford with free card
+            return true;
+        if(this.cost[0] == 1)
+            return p.getResources()[0]>0; //If costs 1 coin, see if you can afford it
+        
+        //Check and update cost with available normal resources
+        int[] brownCost = new int[4];
+        int[] greyCost = new int[3];
+        for(int i = 1;i<5;i++){
+            brownCost[i-1] = (this.cost[i]-p.getResources()[i]<1)? 0 : this.cost[i]-p.getResources()[i];
+        }
+        for(int i = 5;i<8;i++){
+            greyCost[i-5] = (this.cost[i]-p.getResources()[i]<1)? 0 : this.cost[i]-p.getResources()[i];
+        }
+        boolean allZeroes = true;
+        for(int bcost : brownCost)
+            if (bcost>0){
+                allZeroes = false;
+                break;
+            }
+        for(var gcost : greyCost)
+            if (gcost>0){
+                allZeroes = false;
+                break;
+            }
+        if(allZeroes)
+            return true;
+        
+        
     }
     
     public void build(Player p){

@@ -2,7 +2,7 @@ package sevenwonders.GameElements;
 
 public interface Buildable {
     final String[] res2id = {"Coins","Clay","Ore","Stone","Wood","Cloth","Glass","Papyrus"};
-    public boolean canBuild();
+    public boolean canBuild(Player p);
 
     public void build(Player p);
 

@@ -20,6 +20,7 @@ public class Game {
     
     ArrayList<Player> players;
     ArrayList<ArrayList<Card>> hands;
+    ArrayList<Card> discardPile = new ArrayList<>();
     
     public Game(){
         initializeGame();
