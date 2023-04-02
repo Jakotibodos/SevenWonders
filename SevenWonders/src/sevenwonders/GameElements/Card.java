@@ -5,6 +5,8 @@
  */
 package sevenwonders.GameElements;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jakot
@@ -92,12 +94,21 @@ public class Card implements Buildable{
         System.out.println("FreeWith: " + prereq.getName());
     }
     
-    public boolean canBuild(Player p){
+    public int[] priceToBuild(Player p){
+        /*
+        Returns [l,r] here l and r are the number of coins needed to pay to the left and right players
+        If [-1,-1], building is impossible
+        If [0,0], building is free
+        If [2,1] 2 coins must be paid to the left and 1 to the right
+        If [1] price is 1 coin for the bank
+        If length > 2, then multiple choices for paying are possible ([l1,r1,l2,r2])
+         */
+
         if(p.getBuilt().contains(this.freeIfID)) //Check if can afford with free card
-            return true;
+            return new int[] {0,0};
         if(this.cost[0] == 1)
-            return p.getResources()[0]>0; //If costs 1 coin, see if you can afford it
-        
+            return (p.getResources()[0]>0)?new int[] {1}: new int[] {-1,-1}; //If costs 1 coin, return [1] if can afford
+
         //Check and update cost with available normal resources
         int[] brownCost = new int[4];
         int[] greyCost = new int[3];
@@ -119,15 +130,39 @@ public class Card implements Buildable{
                 break;
             }
         if(allZeroes)
-            return true;
-        
-        
+            return new int[] {0,0};
+
+
+
+
+
+        return new int[] {-1,-1};
     }
-    
+
+    public ArrayList<Integer[]> priceComps(int[] price, Player p){
+        //separate into grey and brown resources (for ease of computation)
+        ArrayList<Integer[]> brownComp = p.getBrownComp();
+        ArrayList<Integer[]> greyComp = new ArrayList<>();
+        for(Integer[] other: p.getOtherComp()) {
+            if (other[0] == 1)
+                brownComp.add(other);
+            else
+                greyComp.add(other);
+        }
+        int[] tempPrice = price;
+
+
+        return
+    }
+
+
+
     public void build(Player p){
         if (buildAction != null) 
            buildAction.apply(p);
         p.addCountColor(this.getColorid());  
     }
+
+
         
 }
