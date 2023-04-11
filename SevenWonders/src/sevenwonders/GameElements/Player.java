@@ -20,7 +20,8 @@ public class Player {
     private int[] resources = {0,0,0,0,0,0,0,0};
     //{coins,wood,stone,bricks,ore,glass,papyrus,textile}
     private ArrayList<Integer[]> brownComp = new ArrayList<>(); //OR resources brown
-    private ArrayList<Integer[]> otherComp = new ArrayList<>(); //OR resources yellow and wonderboard
+    private int freeChoiceBrown = 0;
+    private int freeChoiceGrey = 0;
     private int bluePts = 0;
     private int yellowPts = 0;
     private int redPts = 0;
@@ -53,9 +54,6 @@ public class Player {
 
     public void addBrownComp(Integer[] comp){
         this.brownComp.add(comp);
-    }
-    public void addOtherComp(Integer[] comp){
-        this.otherComp.add(comp);
     }
 
     public void addBluePoints(int amount){
@@ -170,7 +168,20 @@ public class Player {
     public ArrayList<Integer[]> getBrownComp(){
         return this.brownComp;
     }
-    public ArrayList<Integer[]> getOtherComp(){
-        return this.otherComp;
+    
+    public int getFreeChoiceGrey(){
+        return this.freeChoiceGrey;
+    }
+    
+    public int getFreeChoiceBrown(){
+        return this.freeChoiceBrown;
+    }
+    
+    public void addFreeChoiceBrown(){
+        this.freeChoiceBrown++;
+    }
+    
+    public void addFreeChoiceGrey(){
+        this.freeChoiceGrey++;
     }
 }

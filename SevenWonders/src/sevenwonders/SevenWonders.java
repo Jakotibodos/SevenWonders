@@ -98,9 +98,9 @@ public class SevenWonders{
         
         //Age 2 Yellow  deck
         Card c39 = new Card(39,"Caravansery",3,new int[] {0,2,0,0,0,0,0,0},2,
-                (Player p )->{Integer[] comp = new Integer[4];comp[0] = 1;comp[1] = 2;comp[2] = 3;comp[3] = 4;p.addOtherComp(comp);}); //Brown ressources composition
+                (Player p )->{p.addFreeChoiceBrown();}); //Brown ressources composition
         Card c40 = new Card(40,"Forum",3,new int[] {0,0,0,2,0,0,0,0},2,
-                (Player p )->{Integer[] comp = new Integer[3];comp[0] = 5;comp[1] = 6;comp[2] = 7;p.addOtherComp(comp);}); //Grey ressources composition
+                (Player p )->{p.addFreeChoiceGrey();}); //Grey ressources composition
         Card c41 = new Card(41,"Vineyard",3,2,
                 (Player p )->{int coinsToAdd = p.getLeftPlayer().getCountColor(0)+p.getRightPlayer().getCountColor(0)+p.getCountColor(0);
                         p.addResource(0, coinsToAdd);}); //Add coins = brown deck of you and neighbors
