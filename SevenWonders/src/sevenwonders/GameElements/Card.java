@@ -140,22 +140,18 @@ public class Card implements Buildable{
     }
 
     public ArrayList<Integer[]> priceComps(int[] price, Player p){
-        //separate into grey and brown resources (for ease of computation)
+
+        ArrayList<Integer[]> possiblePrices = new ArrayList<>();
         ArrayList<Integer[]> brownComp = p.getBrownComp();
-        ArrayList<Integer[]> greyComp = new ArrayList<>();
-        for(Integer[] other: p.getOtherComp()) {
-            if (other[0] == 1)
-                brownComp.add(other);
-            else
-                greyComp.add(other);
-        }
-        int[] tempPrice = price;
 
 
-        return
+
+        return null;
     }
 
-
+    public boolean canBuild(Player p){
+        return true;
+    }
 
     public void build(Player p){
         if (buildAction != null) 

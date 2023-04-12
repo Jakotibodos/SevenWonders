@@ -6,8 +6,7 @@
 package sevenwonders.GameElements;
 
 import java.util.ArrayList;
-/**
- *
+/*
  * @author jakot
  */
 public class Player {
@@ -16,7 +15,7 @@ public class Player {
     private ArrayList<Integer> built = new ArrayList<>(); //used for free cards in other ages
     private int[] builtCardsByColor = {0,0,0,0,0,0,0,0}; 
     //Brown, Grey, blue, yellow, red, green, purple, wonder
-    private WonderBoard wonderBoard = new WonderBoard();
+    private WonderBoard wonderBoard; //TODO
     private int[] resources = {0,0,0,0,0,0,0,0};
     //{coins,wood,stone,bricks,ore,glass,papyrus,textile}
     private ArrayList<Integer[]> brownComp = new ArrayList<>(); //OR resources brown
@@ -53,7 +52,35 @@ public class Player {
     }
 
     public void addBrownComp(Integer[] comp){
-        this.brownComp.add(comp);
+        //For Wood OR Clay, Wood OR Stone, Clay OR Ore
+        //Combination will look something like {[1,1,3],[1,1,4],[1,2,3],[1,2,4],[3,1,3],[3,1,4],[3,2,3],[3,2,4]}
+        //Then x2 the options and add at the end everytime you add a new comp (usually max 4??)
+        if(this.brownComp.isEmpty()){
+            //If first comp, just create the two first resources
+            Integer[] comp1 = {comp[0]};
+            Integer[] comp2 = {comp[1]};
+            this.brownComp.add(comp1);
+            this.brownComp.add(comp2);
+        }
+        else{
+            ArrayList<Integer[]> newBrownComp = new ArrayList<>();
+            for(Integer[] combination: this.brownComp){
+                int n = combination.length; //Previous number of combination cards
+                Integer[] newCombination1 = new Integer[n+1];
+                Integer[] newCombination2 = new Integer[n+1];
+                //Copy current combination twice
+                for(int i = 0; i<combination.length; i++){
+                    newCombination1[i] = combination[i];
+                    newCombination2[i] = combination[i];
+                }
+                //Add each new OR ressources to the new each array
+                newCombination1[n] = comp[0];
+                newCombination2[n] = comp[1];
+                newBrownComp.add(newCombination1);
+                newBrownComp.add(newCombination2);
+            }
+            this.brownComp = newBrownComp;
+        }
     }
 
     public void addBluePoints(int amount){

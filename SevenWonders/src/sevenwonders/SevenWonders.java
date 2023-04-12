@@ -24,8 +24,31 @@ public class SevenWonders{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Game game = new Game();
+        //Game game = new Game();
+        test();
         
+    }
+
+    public static void test(){
+        int[] a = {3,2,0,2,0,0,1};
+        ArrayList<int[]> newPrices = new ArrayList<>();
+        int[][] comb = {{0,1},{0,3},{1,1},{1,3}};
+
+        for (int i = 0; i<comb.length; i++){
+            int[] b = a.clone();
+            for(int res : comb[i]){
+                b[res] = b[res]==0 ? 0 : b[res] - 1;
+            }
+            newPrices.add(b);
+        }
+
+        for(int[] price: newPrices){
+            System.out.println("Price:");
+            System.out.print("[");
+            for(int cost: price)
+                System.out.print(cost+",");
+            System.out.print("]\n");
+        }
     }
     
     public static void createCards(){
