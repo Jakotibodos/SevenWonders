@@ -139,22 +139,30 @@ public class Card implements Buildable{
         return new int[] {-1,-1};
     }
 
-    public ArrayList<Integer[]> priceComps(int[] price, Player p){
-
-        ArrayList<Integer[]> possiblePrices = new ArrayList<>();
+    public ArrayList<int[]> priceComps(int[] price, Player p){
+        //Gives updated possible prices for each combination
+        
+        ArrayList<int[]> possiblePrices = new ArrayList<>();
         ArrayList<Integer[]> brownComp = p.getBrownComp();
 
         
         for (int i = 0; i<brownComp.size(); i++){
             int[] temp = price.clone();
-            for(int res : brownComp[i]){
-                temp[res] = temp[res]==0 ? 0 : b[res] - 1;
+            for(int res : brownComp.get(i)){
+                temp[res] = temp[res]==0 ? 0 : temp[res] - 1;
             }
-            newPrices.add(b);
+            //Check is can afford immediatly
+            if(temp[0]+temp[1]+temp[2]+temp[3]-p.getFreeChoiceBrown()<=0
+                    && temp[4]+temp[5]+temp[6]-p.getFreeChoiceGrey()<=0){
+                ArrayList<int[]> free = new ArrayList<>();
+                free.add(new int[] {0,0,0,0,0,0,0});
+                return free;
+            }
+                
+            
+            possiblePrices.add(temp);
         }
-
-
-        return null;
+        return possiblePrices;
     }
 
     public boolean canBuild(Player p){
