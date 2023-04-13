@@ -144,6 +144,14 @@ public class Card implements Buildable{
         ArrayList<Integer[]> possiblePrices = new ArrayList<>();
         ArrayList<Integer[]> brownComp = p.getBrownComp();
 
+        
+        for (int i = 0; i<brownComp.size(); i++){
+            int[] temp = price.clone();
+            for(int res : brownComp[i]){
+                temp[res] = temp[res]==0 ? 0 : b[res] - 1;
+            }
+            newPrices.add(b);
+        }
 
 
         return null;

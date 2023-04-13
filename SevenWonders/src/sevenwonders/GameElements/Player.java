@@ -211,4 +211,8 @@ public class Player {
     public void addFreeChoiceGrey(){
         this.freeChoiceGrey++;
     }
+    
+    public void build(Card c){
+        c.build(this);
+    }
 }
